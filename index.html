@@ -7,11 +7,11 @@
   <meta name="description" content="Security-first engineering, managed security, cloud engineering and custom software." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- favicon (put your logo.png inside images/) -->
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
- <!-- NAVBAR -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -21,26 +21,31 @@
           <div class="tag">Cybersecurity · Cloud · Software</div>
         </div>
       </div>
+
       <nav class="nav" id="nav">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#partnerships">Partnerships</a>
         <a href="#contact">Contact</a>
         <button class="btn primary" id="getStarted">Get Started</button>
+
         <button class="btn ghost theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle theme">
           <img alt="Toggle theme" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/icons/moon-stars-fill.svg" />
         </button>
       </nav>
+
       <button class="menu-btn" id="menuBtn" aria-label="menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
+
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <a href="#home" class="mobile-link">Home</a>
       <a href="#services" class="mobile-link">Services</a>
       <a href="#partnerships" class="mobile-link">Partnerships</a>
       <a href="#contact" class="mobile-link">Contact</a>
       <button class="btn primary">Get Started</button>
+
       <button class="btn ghost theme-toggle" id="themeToggleMobile" aria-pressed="false" title="Toggle theme">
         <img alt="Toggle theme" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/icons/moon-stars-fill.svg" />
       </button>
@@ -53,17 +58,22 @@
       <div class="container hero-grid">
         <div class="hero-left">
           <h1>Secure, scalable systems engineered for growth</h1>
-          <p class="lead">We design security-first products, cloud platforms and managed services — consulting,
-            implementation and continuous monitoring in one place.</p>
+          <p class="lead">
+            We design security-first products, cloud platforms and managed services — consulting,
+            implementation and continuous monitoring in one place.
+          </p>
+
           <div class="hero-ctas">
             <button class="btn primary" id="talkBtn">Talk to an expert</button>
             <a class="link" href="#services">View services</a>
           </div>
+
           <ul class="trust-list">
             <li>Trusted by startups</li>
             <li>Palo Alto ecosystem</li>
           </ul>
         </div>
+
         <div class="hero-right">
           <div class="card-image">
             <img src="images/home.png" alt="Home image" class="home-main-image">
@@ -76,23 +86,28 @@
         <div class="story-left">
           <img src="images/story.jpg" alt="Our story" class="story-img">
         </div>
+
         <div class="story-right">
           <h2>Our story</h2>
           <p class="story-lead">Our team comes with the experience and knowledge</p>
+
           <div class="tabs" role="tablist" aria-label="Our story tabs">
             <button class="tab-btn active" data-tab="who" role="tab" aria-selected="true">Who We Are</button>
             <button class="tab-btn" data-tab="mission" role="tab" aria-selected="false">Our Mission</button>
             <button class="tab-btn" data-tab="vision" role="tab" aria-selected="false">Our Vision</button>
           </div>
+
           <div class="tab-contents">
-            <div class="tab-content active" id="who" role="tabpanel">
+            <div class="tab-content active" id="who" role="tabpanel" aria-hidden="false">
               <p>We are a team of experienced professionals passionate about creating profound impact in the
                 area of cybersecurity and IT services by partnering with the best of the OEMs and to help companies
                 transform IT services safe and secure.</p>
             </div>
+
             <div class="tab-content" id="mission" role="tabpanel" aria-hidden="true">
               <p>Trusted advisor to our customers and Partner of choice for our OEMs.</p>
             </div>
+
             <div class="tab-content" id="vision" role="tabpanel" aria-hidden="true">
               <p>To be a state of art services company providing best in class support with customer empathy.</p>
             </div>
@@ -106,9 +121,13 @@
       <div class="container">
         <h2>What we do</h2>
         <p class="section-sub">Security-first engineering and managed services.</p>
+
+        <!-- services image -->
         <div class="services-image-wrap">
           <img src="images/services.png" alt="Services overview" class="services-image">
         </div>
+
+        <!-- cards grid: 4 cards, 2 per row -->
         <div class="cards grid-2x2">
           <div class="card">
             <h3>Cloud Transformation</h3>
@@ -120,6 +139,7 @@
             </ul>
             <a href="#about" class="card-link">About →</a>
           </div>
+
           <div class="card">
             <h3>Cloud Security</h3>
             <ul class="card-bullets">
@@ -130,6 +150,7 @@
             </ul>
             <a href="#about" class="card-link">About →</a>
           </div>
+
           <div class="card">
             <h3>Enterprise Security</h3>
             <ul class="card-bullets">
@@ -140,6 +161,7 @@
             </ul>
             <a href="#about" class="card-link">About →</a>
           </div>
+
           <div class="card">
             <h3>Data centre Virtualisation</h3>
             <ul class="card-bullets">
@@ -159,6 +181,7 @@
       <div class="container">
         <h2>Partnerships</h2>
         <p class="section-sub">We work with technology partners and vendors to deliver secure solutions.</p>
+
         <div class="partners-row">
           <div class="partner">
             <img src="images/partner1.jpeg" alt="Partner 1" />
@@ -166,6 +189,24 @@
           <div class="partner">
             <img src="images/partner2.webp" alt="Partner 2" />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSTED BY -->
+    <section id="trusted" class="section trusted">
+      <div class="container">
+        <h2>Trusted by 30+ global companies</h2>
+        <p class="section-sub">Teams rely on us for secure, scalable solutions.</p>
+
+        <div class="partners-row">
+          <div class="partner"><img src="images/Flipkart.png" alt="Flipkart" /></div>
+          <div class="partner"><img src="images/Groww.JPG" alt="Groww" /></div>
+          <div class="partner"><img src="images/AP-Police.png" alt="AP Police" /></div>
+          <div class="partner"><img src="images/Hexaware.png" alt="Hexaware" /></div>
+          <div class="partner"><img src="images/Collabera.png" alt="Collabera" /></div>
+          <div class="partner"><img src="images/Razorpay.png" alt="Razorpay" /></div>
+          <div class="partner"><span>+ more</span></div>
         </div>
       </div>
     </section>
@@ -180,6 +221,7 @@
           <p class="muted">Certified engineers, hands-on cloud & security experience, and a pragmatic approach to solving
             risk.</p>
         </div>
+
         <div class="stats">
           <div class="stat">
             <div class="stat-big">8+</div>
@@ -203,25 +245,30 @@
         <div class="contact-info">
           <h3>Let's talk</h3>
           <p class="muted">Tell us about your project and security needs. We'll respond within one business day.</p>
+
           <div class="contact-meta">
             <div><strong>Email:</strong> support@tutelartechlabs.com</div>
             <div><strong>Phone:</strong> +91 789 249 6283</div>
             <div><strong>Location:</strong> Remote / India</div>
           </div>
         </div>
+
         <form id="contactForm" class="contact-form" novalidate>
           <label>
             Name
             <input type="text" name="name" id="name" required />
           </label>
+
           <label>
             Email
             <input type="email" name="email" id="email" required />
           </label>
+
           <label>
             Message
             <textarea name="message" id="message" rows="6" required></textarea>
           </label>
+
           <div class="form-actions">
             <button type="submit" class="btn primary">Send message</button>
             <div id="formStatus" class="form-status" aria-live="polite"></div>
@@ -235,6 +282,7 @@
       <div class="container">
         <h2>Find us</h2>
         <p class="section-sub">26-27, 2nd Cross Rd, P&T Layout, Coconut Grove Layout, Ashirvad Colony, Horamavu, Bengaluru, Karnataka 560113</p>
+
         <div class="map-wrap" id="mapWrap">
           <iframe
             class="map-iframe"
@@ -245,6 +293,7 @@
             frameborder="0"
             allowfullscreen
             loading="lazy"></iframe>
+
           <div class="map-actions">
             <a href="https://www.google.com/maps/search/?api=1&query=26-27,+2nd+Cross+Rd,+P%26T+Layout,+Coconut+Grove+Layout,+Ashirvad+Colony,+Horamavu,+Bengaluru,+Karnataka+560113"
                target="_blank" rel="noopener noreferrer" class="btn map-open">Open in Google Maps</a>
@@ -256,7 +305,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Tutelar Tech Labs. All rights reserved.</div>
+      <div>©_SS<span id="year"></span> Tutelar Tech Labs. All rights reserved.</div>
       <div class="small muted">Built with a focus on security & privacy</div>
     </div>
   </footer>
