@@ -1,4 +1,41 @@
-// script.js — includes map lazy-loading + go-to-top button logic + tabs + existing behavior
+// Theme toggle (light/dark)
+const themeToggle = document.getElementById('themeToggle');
+const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+const moonIcon = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/icons/moon-stars-fill.svg";
+const sunIcon = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/icons/brightness-high-fill.svg";
+
+function setTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('theme', mode);
+  const icon = mode === 'dark' ? sunIcon : moonIcon;
+  const pressed = mode === 'dark';
+  if (themeToggle) {
+    themeToggle.innerHTML = `<img alt="Toggle theme" src="${icon}">`;
+    themeToggle.setAttribute('aria-pressed', String(pressed));
+  }
+  if (themeToggleMobile) {
+    themeToggleMobile.innerHTML = `<img alt="Toggle theme" src="${icon}">`;
+    themeToggleMobile.setAttribute('aria-pressed', String(pressed));
+  }
+}
+
+function initTheme() {
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const mode = stored || (prefersDark ? 'dark' : 'light');
+  setTheme(mode);
+}
+
+initTheme();
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+themeToggle?.addEventListener('click', toggleTheme);
+themeToggleMobile?.addEventListener('click', toggleTheme);
 
 // mobile menu toggle
 const menuBtn = document.getElementById('menuBtn');
@@ -36,7 +73,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // contact form (client side only)
 const form = document.getElementById('contactForm');
 const statusEl = document.getElementById('formStatus');
-
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -44,7 +80,6 @@ if (form) {
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
-
     if (!name || !email || !message) {
       statusEl.style.color = '#dc2626';
       statusEl.textContent = 'Please fill all fields.';
@@ -55,11 +90,9 @@ if (form) {
       statusEl.textContent = 'Provide a valid email.';
       return;
     }
-
     statusEl.style.color = '#0ea5a4';
     statusEl.textContent = 'Sending...';
     form.querySelector('button').disabled = true;
-
     setTimeout(() => {
       statusEl.style.color = '#0ea5a4';
       statusEl.textContent = 'Thank you — we will get back to you soon.';
@@ -84,14 +117,12 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
 (function () {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
-
   function activateTab(tabName) {
     tabButtons.forEach(btn => {
       const isActive = btn.dataset.tab === tabName;
       btn.classList.toggle('active', isActive);
       btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
-
     tabContents.forEach(tc => {
       const match = tc.id === tabName;
       if (match) {
@@ -103,10 +134,7 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
       }
     });
   }
-
-  // default: show who
   activateTab('who');
-
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const tabName = btn.dataset.tab;
@@ -118,7 +146,6 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
 // --- GO TO TOP button logic ---
 const toTopBtn = document.getElementById('toTopBtn');
 const showAfter = 200; // px scrolled before showing
-
 function handleScroll() {
   const scrolled = window.scrollY || document.documentElement.scrollTop;
   if (scrolled > showAfter) {
@@ -127,37 +154,28 @@ function handleScroll() {
     toTopBtn.classList.remove('show');
   }
 }
-
-// debounce small helper to avoid too many repaint triggers
 let scrollDebounce;
 window.addEventListener('scroll', () => {
   clearTimeout(scrollDebounce);
   scrollDebounce = setTimeout(handleScroll, 50);
 });
-
-// click to scroll to top smoothly
-toTopBtn.addEventListener('click', () => {
+toTopBtn?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // optionally hide the button quickly after click
   setTimeout(() => toTopBtn.classList.remove('show'), 500);
 });
-
-// initialize state
 handleScroll();
 
 // --- MAP lazy-loading using IntersectionObserver ---
 (function () {
   const mapWrap = document.getElementById('mapWrap');
   const iframe = document.getElementById('mapIframe');
-  if (!iframe) return;
-
+  if (!iframe || !mapWrap) return;
   function loadMap() {
     const src = iframe.getAttribute('data-src');
     if (src && !iframe.src) {
       iframe.src = src;
     }
   }
-
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -167,10 +185,9 @@ handleScroll();
         }
       });
     }, { rootMargin: '200px' });
-
     io.observe(mapWrap);
   } else {
-    // fallback - load immediately
     loadMap();
   }
 })();
+
