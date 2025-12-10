@@ -251,6 +251,33 @@
         </form>
       </div>
     </section>
+
+    <!-- MAP SECTION (added at bottom, before footer) -->
+    <section id="map" class="section map-section">
+      <div class="container">
+        <h2>Find us</h2>
+        <p class="section-sub">26-27, 2nd Cross Rd, P&T Layout, Coconut Grove Layout, Ashirvad Colony, Horamavu, Bengaluru, Karnataka 560113</p>
+
+        <div class="map-wrap" id="mapWrap">
+          <!-- lazy iframe: data-src will be swapped in JS when visible -->
+          <iframe
+            class="map-iframe"
+            id="mapIframe"
+            data-src="https://www.google.com/maps?q=26-27,+2nd+Cross+Rd,+P%26T+Layout,+Coconut+Grove+Layout,+Ashirvad+Colony,+Horamavu,+Bengaluru,+Karnataka+560113&output=embed"
+            title="Tutelar Tech Labs location"
+            aria-label="Map showing Tutelar Tech Labs location"
+            frameborder="0"
+            allowfullscreen
+            loading="lazy"></iframe>
+
+          <div class="map-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=26-27,+2nd+Cross+Rd,+P%26T+Layout,+Coconut+Grove+Layout,+Ashirvad+Colony,+Horamavu,+Bengaluru,+Karnataka+560113"
+               target="_blank" rel="noopener noreferrer" class="btn map-open">Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">

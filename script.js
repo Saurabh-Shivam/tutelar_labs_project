@@ -1,3 +1,6 @@
+// script.js — includes map lazy-loading + go-to-top button logic + tabs + existing behavior
+
+// mobile menu toggle
 const menuBtn = document.getElementById('menuBtn');
 const mobileNav = document.getElementById('mobileNav');
 menuBtn && menuBtn.addEventListener('click', () => {
@@ -7,13 +10,14 @@ menuBtn && menuBtn.addEventListener('click', () => {
   mobileNav.setAttribute('aria-hidden', show ? 'false' : 'true');
 });
 
+// close mobile nav on link click
 document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => {
   mobileNav.classList.remove('show');
   menuBtn.setAttribute('aria-expanded', 'false');
   mobileNav.setAttribute('aria-hidden', 'true');
 }));
 
-
+// smooth scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
@@ -21,7 +25,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
+      // close mobile nav if open
       mobileNav.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
@@ -29,7 +33,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-
+// contact form (client side only)
 const form = document.getElementById('contactForm');
 const statusEl = document.getElementById('formStatus');
 
@@ -65,9 +69,10 @@ if (form) {
   });
 }
 
+// fill current year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-
+// CTA scroll actions
 document.getElementById('getStarted')?.addEventListener('click', () => {
   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
 });
@@ -75,7 +80,7 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
 });
 
-
+// STORY TABS functionality with animation
 (function () {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -99,7 +104,7 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
     });
   }
 
-
+  // default: show who
   activateTab('who');
 
   tabButtons.forEach(btn => {
@@ -110,9 +115,9 @@ document.getElementById('talkBtn')?.addEventListener('click', () => {
   });
 })();
 
-
+// --- GO TO TOP button logic ---
 const toTopBtn = document.getElementById('toTopBtn');
-const showAfter = 200;
+const showAfter = 200; // px scrolled before showing
 
 function handleScroll() {
   const scrolled = window.scrollY || document.documentElement.scrollTop;
@@ -123,18 +128,49 @@ function handleScroll() {
   }
 }
 
-
+// debounce small helper to avoid too many repaint triggers
 let scrollDebounce;
 window.addEventListener('scroll', () => {
   clearTimeout(scrollDebounce);
   scrollDebounce = setTimeout(handleScroll, 50);
 });
 
+// click to scroll to top smoothly
 toTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-
+  // optionally hide the button quickly after click
   setTimeout(() => toTopBtn.classList.remove('show'), 500);
 });
 
-
+// initialize state
 handleScroll();
+
+// --- MAP lazy-loading using IntersectionObserver ---
+(function () {
+  const mapWrap = document.getElementById('mapWrap');
+  const iframe = document.getElementById('mapIframe');
+  if (!iframe) return;
+
+  function loadMap() {
+    const src = iframe.getAttribute('data-src');
+    if (src && !iframe.src) {
+      iframe.src = src;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadMap();
+          io.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    io.observe(mapWrap);
+  } else {
+    // fallback - load immediately
+    loadMap();
+  }
+})();
