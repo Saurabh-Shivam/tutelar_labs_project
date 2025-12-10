@@ -1,4 +1,4 @@
-/* styles.css - updated for story tabs + home main image */
+/* styles.css - includes go-to-top button styling */
 
 /* Base + variables */
 :root {
@@ -471,6 +471,65 @@ body {
 
 .small {
     font-size: 13px
+}
+
+/* go to top button (rightmost side) */
+.to-top {
+    position: fixed;
+    right: 18px;
+    /* distance from right edge */
+    bottom: 22vh;
+    /* vertical position (22% of viewport height) */
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.12);
+    transform: translateY(12px) scale(0.95);
+    opacity: 0;
+    transition: transform 320ms cubic-bezier(.2, .9, .3, 1), opacity 260ms ease;
+    z-index: 120;
+}
+
+/* visible state */
+.to-top.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* hover/focus */
+.to-top:hover,
+.to-top:focus {
+    transform: translateY(0) scale(1.05);
+    outline: none;
+}
+
+/* small screens: move button higher and slightly smaller */
+@media (max-width:980px) {
+    .to-top {
+        right: 12px;
+        bottom: 18vh;
+        width: 44px;
+        height: 44px
+    }
+}
+
+/* very small: hide to avoid overlapping footer controls */
+@media (max-width:420px) {
+    .to-top {
+        display: block;
+        right: 10px;
+        bottom: 14vh;
+        width: 40px;
+        height: 40px
+    }
 }
 
 /* responsive */
