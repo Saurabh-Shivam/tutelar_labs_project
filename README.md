@@ -1,7 +1,8 @@
-```markdown
-# Tutelar Tech Labs — Company Website (https://tutelar-tech-labs.vercel.app/)
 
-This repository contains the official website for **Tutelar Tech Labs**, showcasing services in cybersecurity, cloud computing, enterprise security, and data-center engineering.  
+# Tutelar Tech Labs — Company Demo Website 
+(https://tutelar-tech-labs.vercel.app/)
+
+This repository contains the clone(demo) website for **Tutelar Tech Labs**, showcasing services in cybersecurity, cloud computing, enterprise security, and data-center engineering.  
 The site is built using **HTML, CSS, and vanilla JavaScript**, keeping it lightweight, fast, and easy to maintain.
 
 ---
@@ -22,5 +23,3 @@ The site is built using **HTML, CSS, and vanilla JavaScript**, keeping it lightw
 ---
 
 ### ⭐ If you find this useful, don’t forget to star the repo!
-
-```
